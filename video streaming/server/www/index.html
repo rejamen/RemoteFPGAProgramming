@@ -1,0 +1,83 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>RaspiCam</title>
+    <link href="./www/bootstrap.min.css" rel="stylesheet" /> 
+</head>
+<body>
+
+    <div align="center">
+        <embed id="video1"
+               width="640px"
+               height="480px"
+               target="rtsp://192.168.1.108:9000/"
+               autoplay="yes"
+               name="video1"
+               type="application/x-vlc-plugin" />
+        </embed>
+    </div>
+	<div align="center">
+		<div class="panel" align="center" style="margin-left:400px">
+			<div class="panel-body">
+				<div class="col-sm-12 form-group">
+					<a href="javascript:;" onclick='document.video1.play();' class="col-sm-3 btn btn-large" style="width:100px">Play video1</a> 
+					<a href="javascript:;" onclick='document.video1.pause();' class="col-sm-3 btn btn-large" style="width:100px">Pause video1</a> 
+					<a href="javascript:;" onclick='document.video1.stop();' class="col-sm-3 btn btn-large" style="width:100px">Stop video1</a> 
+					<a href="javascript:;" onclick='document.video1.fullscreen();' class="col-sm-3 btn btn-large" style="width:100px">Fullscreen</a>
+				</div>
+			</div>
+		</div>
+	</div> 
+    <div align="center">
+        <table>
+            <tr>
+                <td style="margin-left:auto">
+                    <form action="/start" method="post" target="iframe_hide" class="form-inline">
+                        <input type="submit" id="start" name="start_vprocess" value="start viedo process" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    </form>
+                </td>
+                <td style="margin-left:auto">
+                    <form action="/stop" method="post" target="iframe_hide" class="form-inline">
+                        <input type="submit" id="stop" name="stop_vprocess" value="stop viedo process" class="btn btn-primary" />
+                    </form>
+                </td>
+            </tr>
+        </table> 
+        <div class="panel" align="center">
+            <div class="panel-body">
+                <form role="form" class="form-inline" action="/change" method="post" target="iframe_hide">
+                    <div class="col-sm-12 form-group">
+                        <label class="col-sm-2 control-label text-right" for="para_bright"> brightness:</label>
+                        <input type="text" class="col-sm-3 form-control" name="para_bright" id="para_bright"/>
+
+                        <label class="col-sm-2 control-label text-right" for="para_fps">fps:</label>
+                        <input type="text" class="col-sm-3 form-control" name="para_fps" id="para_fps"  />
+
+                        <label class="col-sm-2 control-label text-right" for="para_bitrate">bitrate:</label>
+                        <input type="text" class="col-sm-3 form-control" name="para_bitrate" id="para_bitrate"  />
+                    </div>
+                    <br />
+                    <br />
+                    <div class="col-sm-12 form-group">
+                        <label class="col-sm-2 control-label text-right" for="para_width"> width:</label>
+                        <input type="text" class="col-sm-3 form-control" name="para_width" id="para_width" />
+
+                        <label class="col-sm-2 control-label text-right" for="para_height">height:</label>
+                        <input type="text" class="col-sm-3 form-control" name="para_height" id="para_height" /> 
+                    </div>
+                    <br />
+                    <br />
+                    <div>
+                        <input type="submit" id="change" name="change_vprocess" value="change video parameters" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
+        </div>  
+    <div align="center">
+        <iframe id="iframe_hide" name="iframe_hide" style="display:block"></iframe>
+    </div>
+        </div>
+
+</body>
+</html> 
